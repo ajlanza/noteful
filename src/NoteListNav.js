@@ -1,7 +1,5 @@
-  
 import React, { Component } from 'react'
 import { NavLink, Link } from 'react-router-dom'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import CircleButton from './CircleButton'
 import './NoteListNav.css'
 import NotefulContext from './NotefulContext'
@@ -19,9 +17,6 @@ export default class NoteListNav extends Component {
                 className='NoteListNav__folder-link'
                 to={`/folder/${folder.id}`}
               >
-                {/* <span className='NoteListNav__num-notes'>
-                  {countNotesForFolder(notes, folder.id)}
-                </span> */}
                 {folder.name}
               </NavLink>
             </li>
@@ -34,7 +29,7 @@ export default class NoteListNav extends Component {
             type='button'
             className='NoteListNav__add-folder-button'
           >
-            {/* <FontAwesomeIcon icon='plus' /> */}Add
+            Add
             <br />
             Folder
           </CircleButton>

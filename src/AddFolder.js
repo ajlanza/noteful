@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import NotefulContext from './NotefulContext';
 import ValidationError from './ValidationError';
+import FormError from './FormError'
 
 export default class AddFolder extends Component {
   static contextType = NotefulContext;
@@ -65,6 +66,7 @@ export default class AddFolder extends Component {
     const newFolderError = this.validateNewFolder();
     return(
       <div>
+        <FormError>
         <form className='AddFolder' onSubmit={this.handleSubmit}>
           <label htmlFor='folderName'>
             Folder Name
@@ -77,13 +79,12 @@ export default class AddFolder extends Component {
             onChange={e => this.updateFolder(e.target.value)}
           />
           {this.state.touched && <ValidationError message={newFolderError} />}
-          
           {' '}
           <button type='submit' disabled={this.validateNewFolder() }>
-            
             Save
           </button>
         </form>
+        </FormError>
       </div>
     );
   }

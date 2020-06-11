@@ -131,9 +131,6 @@ class App extends Component {
           notes: this.state.notes,
           deleteNote: this.handleDeleteNote,
           addFolder: this.addFolder,
-          // updateFolder: this.updateFolder,
-          // folderTouched: this.state.folderTouched,
-          // validateFolder: this.validateFolder,
           addNote: this.addNote
         };
 

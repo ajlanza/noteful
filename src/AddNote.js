@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import NotefulContext from './NotefulContext';
 import ValidationError from './ValidationError';
+import FormError from './FormError';
 
 export default class AddNote extends Component {
     static contextType = NotefulContext;
@@ -75,7 +76,6 @@ export default class AddNote extends Component {
         this.context.addNote(data)
         this.props.history.push('/')
       })
-      //SET ERROR BOUNDARY??
       .catch(error => {
         alert(error.message)
         this.props.history.push('/')
@@ -89,6 +89,7 @@ export default class AddNote extends Component {
 
       return(
         <div>
+          <FormError>
           <form className='AddNote' onSubmit={this.handleSubmit}>
             <label htmlFor='folderSelection'>Select a folder: </label>
             <select name='folderSelection' id='folderSelection'>
@@ -128,6 +129,7 @@ export default class AddNote extends Component {
               Save Note
             </button>
           </form>
+          </FormError>
         </div>
       );
     }
