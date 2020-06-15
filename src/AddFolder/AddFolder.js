@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import NotefulContext from './NotefulContext';
-import ValidationError from './ValidationError';
-import FormError from './FormError'
+import NotefulContext from '../NotefulContext';
+import ValidationError from '../ValidationError';
+import FormError from '../FormError/FormError';
+import PropTypes from 'prop-types';
 
 export default class AddFolder extends Component {
   static contextType = NotefulContext;
@@ -34,7 +35,6 @@ export default class AddFolder extends Component {
     const addFolderName = {
       name: folderName
     }
-    // console.log(folderName);
     //add the folder name via post
     fetch('http://localhost:9090/folders', {
       method: 'POST',
@@ -88,4 +88,8 @@ export default class AddFolder extends Component {
       </div>
     );
   }
+}
+
+AddFolder.propTypes ={
+  history: PropTypes.object.isRequired
 }

@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import { NavLink, Link } from 'react-router-dom'
-import CircleButton from './CircleButton'
-import './NoteListNav.css'
-import NotefulContext from './NotefulContext'
+import React, { Component } from 'react';
+import { NavLink, Link } from 'react-router-dom';
+import CircleButton from '../CircleButton/CircleButton';
+import './NoteListNav.css';
+import NotefulContext from '../NotefulContext';
 
 export default class NoteListNav extends Component {
   static contextType = NotefulContext;
@@ -38,4 +38,3 @@ export default class NoteListNav extends Component {
     )
   }
 }
-

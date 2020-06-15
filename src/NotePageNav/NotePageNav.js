@@ -1,9 +1,10 @@
   
-import React from 'react'
-import CircleButton from './CircleButton'
-import NotefulContext from './NotefulContext'
-import { findNote, findFolder } from './notes-helpers'
-import './NotePageNav.css'
+import React from 'react';
+import CircleButton from '../CircleButton/CircleButton';
+import NotefulContext from '../NotefulContext';
+import { findNote, findFolder } from '../notes-helpers';
+import './NotePageNav.css';
+import PropTypes from 'prop-types';
 
 export default class NotePageNav extends React.Component {
   static defaultProps = {
@@ -39,4 +40,8 @@ export default class NotePageNav extends React.Component {
       </div>
     )
   }
+}
+
+NotePageNav.propTypes ={
+  match: PropTypes.object.isRequired
 }

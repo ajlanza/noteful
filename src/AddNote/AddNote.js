@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import NotefulContext from './NotefulContext';
-import ValidationError from './ValidationError';
-import FormError from './FormError';
+import NotefulContext from '../NotefulContext';
+import ValidationError from '../ValidationError';
+import FormError from '../FormError/FormError';
+import PropTypes from 'prop-types';
 
 export default class AddNote extends Component {
     static contextType = NotefulContext;
@@ -48,10 +49,13 @@ export default class AddNote extends Component {
       //get all the information from the form
       const noteContent = e.target.noteContent.value;
       const noteName = e.target.noteName.value;
-      const folderId = e.target.folderSelection.value
+      const folderId = e.target.folderSelection.value;
+      //get time form is submitted
+      const curTime = new Date().toLocaleString();
       //set all info to be added
       const addNote = {
         name: noteName,
+        modified: curTime,
         folderId: folderId,
         content: noteContent,
       }
@@ -86,7 +90,7 @@ export default class AddNote extends Component {
       const { folders=[] } = this.context;
       const nameError = this.validateName();
       const contentError = this.validateContent();
-
+      
       return(
         <div>
           <FormError>
@@ -133,4 +137,8 @@ export default class AddNote extends Component {
         </div>
       );
     }
+  }
+
+  AddNote.propTypes ={
+    history: PropTypes.object.isRequired
   }

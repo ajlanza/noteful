@@ -1,20 +1,18 @@
 import React, {Component} from 'react';
 import {Route, Link} from 'react-router-dom';
-// import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import NoteListNav from './NoteListNav';
-import NotePageNav from './NotePageNav';
-import NoteListMain from './NoteListMain';
-import NotePageMain from './NotePageMain';
+import NoteListNav from './NoteListNav/NoteListNav';
+import NotePageNav from './NotePageNav/NotePageNav';
+import NoteListMain from './NoteListMain/NoteListMain';
+import NotePageMain from './NotePageMain/NotePageMain';
 import './App.css';
-import AddFolder from './AddFolder';
-import AddNote from './AddNote';
+import AddFolder from './AddFolder/AddFolder';
+import AddNote from './AddNote/AddNote';
 import NotefulContext from './NotefulContext';
 
 class App extends Component {
     state = {
         notes: [],
         folders: [],
-        // folderTouched: false
     };
     
     addFolder = folder => {
@@ -22,22 +20,6 @@ class App extends Component {
         folders: [ ...this.state.folders, folder ],
       })
     }
-    //  updateFolder = folder => {
-    //    this.setState({
-    //      folderTouched: true
-    //    })
-    //    console.log(this.state.folderTouched);
-    //    console.log(folder, folder.length);
-    //    if (folder.length === 0){
-    //      console.log('folder lenggth is 0');
-    //      this.setState({
-    //        folderTouched: false
-    //      })
-    //    }
-    //  }
-    // validateFolder = folder => {
-    //   console.log(folder);
-    // }
 
     addNote = note => {
       this.setState({
@@ -89,8 +71,6 @@ class App extends Component {
           .catch(error => this.setState({ error }))
         }
 
-
-
     renderNavRoutes() {
         return (
             <>
@@ -139,12 +119,10 @@ class App extends Component {
             <div className="App">
                 <nav className="App__nav">
                   {this.renderNavRoutes()}
-                </nav>
-              
+                </nav>        
                 <header className="App__header">
                     <h1>
-                        <Link to="/">Noteful</Link>{' '}
-                        {/* <FontAwesomeIcon icon="check-double" /> */}
+                      <Link to="/">Noteful</Link>{' '}
                     </h1>
                 </header>
                 <main className="App__main">{this.renderMainRoutes()}</main>

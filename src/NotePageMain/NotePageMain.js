@@ -1,8 +1,9 @@
-import React, { Component } from 'react'
-import Note from './Note'
-import './NotePageMain.css'
-import { findNote } from './notes-helpers'
-import NotefulContext from './NotefulContext'
+import React, { Component } from 'react';
+import Note from '../Note/Note';
+import './NotePageMain.css';
+import { findNote } from '../notes-helpers';
+import NotefulContext from '../NotefulContext';
+import PropTypes from 'prop-types';
 
 export default class NotePageMain extends Component {
   static defaultProps = {
@@ -37,8 +38,6 @@ export default class NotePageMain extends Component {
   )}
 }
 
-NotePageMain.defaultProps = {
-  note: {
-    content: '',
-  }
+NotePageMain.propTypes = {
+  match: PropTypes.object.isRequired
 }

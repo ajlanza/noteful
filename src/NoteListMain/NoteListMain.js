@@ -1,23 +1,25 @@
-import React, { Component }from 'react'
-import { Link } from 'react-router-dom'
-import Note from './Note'
-import CircleButton from './CircleButton'
-import './NoteListMain.css'
-import NotefulContext from './NotefulContext'
-import { getNotesForFolder } from './notes-helpers'
+import React, { Component }from 'react';
+import { Link } from 'react-router-dom';
+import Note from '../Note/Note';
+import CircleButton from '../CircleButton/CircleButton';
+import './NoteListMain.css';
+import NotefulContext from '../NotefulContext';
+import { getNotesForFolder } from '../notes-helpers';
+import PropTypes from 'prop-types';
 
 export default class NoteListMain extends Component {
-  static defaulProps = {
+  static defaultProps = {
     match: {
       params: {}
     }
   }
   static contextType = NotefulContext
-
+  
   render() {
     const { folderId } = this.props.match.params
     const { notes=[] } = this.context
     const notesForFolders = getNotesForFolder(notes, folderId)
+
   return (
     <section className='NoteListMain'>
       <ul>
@@ -45,4 +47,8 @@ export default class NoteListMain extends Component {
       </div>
     </section>
   )}
+}
+
+NoteListMain.propTypes = {
+  match: PropTypes.object.isRequired
 }

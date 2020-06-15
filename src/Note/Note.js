@@ -1,9 +1,8 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-// import { format } from 'date-fns'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import './Note.css'
-import NotefulContext from './NotefulContext'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import './Note.css';
+import NotefulContext from '../NotefulContext';
+import PropTypes from 'prop-types';
 
 export default class Note extends Component {
   static defaultProps = {
@@ -48,7 +47,6 @@ export default class Note extends Component {
         className='Note__delete' 
         type='button'
         onClick={this.handleClickDelete}>
-        {/* <FontAwesomeIcon icon='trash-alt' /> */}
         {' '}
         remove
       </button>
@@ -57,12 +55,16 @@ export default class Note extends Component {
           Modified
           {' '}
           <span className='Date'>
-            {/* {format( */}
               {modified}
-              {/* , 'Do MMM YYYY')} */}
           </span>
         </div>
       </div>
     </div>
   )}
+}
+
+Note.propTypes = {
+  name: PropTypes.string,
+  id: PropTypes.string,
+  modified: PropTypes.string
 }
