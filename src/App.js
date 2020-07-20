@@ -29,13 +29,13 @@ class App extends Component {
    
     handleDeleteNote = noteId => {
       this.setState({
-        notes: this.state.notes.filter(note => note.id !== noteId)
+        notes: this.state.notes.filter(note => note.id != noteId)
       });
     }
 
     componentDidMount() {
         //Get folders from API
-        fetch('http://localhost:9090/folders', {
+        fetch('http://localhost:8000/api/folders', {
           method: 'GET',
           headers: {
             'content-type': 'application/json'
@@ -53,7 +53,7 @@ class App extends Component {
           .catch(error => this.setState({ error }))
 
           //Get notes from API
-          fetch('http://localhost:9090/notes', {
+          fetch('http://localhost:8000/api/notes', {
           method: 'GET',
           headers: {
             'content-type': 'application/json'
@@ -74,7 +74,7 @@ class App extends Component {
     renderNavRoutes() {
         return (
             <>
-                {['/', '/folder/:folderId'].map(path => (
+                {['/', '/api/folders/:folder_id'].map(path => (
                     <Route
                         exact
                         key={path}
@@ -82,7 +82,7 @@ class App extends Component {
                         component={NoteListNav}
                     />          
                 ))}
-                <Route path="/note/:noteId" component={NotePageNav} />
+                <Route path="/api/notes/:note_id" component={NotePageNav} />
                 <Route path="/add-folder" component={AddFolder} />
                 <Route path="/add-note" component={AddNote} />
             </>
@@ -92,7 +92,7 @@ class App extends Component {
     renderMainRoutes() {
         return (
             <>
-                {['/', '/folder/:folderId'].map(path => (
+                {['/', '/api/folders/:folder_id'].map(path => (
                     <Route
                         exact
                         key={path}
@@ -100,7 +100,7 @@ class App extends Component {
                         component={NoteListMain}
                     />
                 ))}
-                <Route path="/note/:noteId" component ={NotePageMain} />
+                <Route path="/api/notes/:note_id" component ={NotePageMain} />
             </>
         );
     }
@@ -113,6 +113,7 @@ class App extends Component {
           addFolder: this.addFolder,
           addNote: this.addNote
         };
+
 
         return (
           <NotefulContext.Provider value={contextValue}>

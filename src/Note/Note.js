@@ -12,12 +12,12 @@ export default class Note extends Component {
   
   handleClickDelete = e => {
     e.preventDefault()
-    const noteId = this.props.id
+    const noteId = this.props.note_id
     
-    fetch(`http://localhost:9090/notes/${noteId}`, {
+    fetch(`http://localhost:8000/api/notes/${noteId}`, {
       method: 'DELETE',
       headers: {
-        'content-type': 'applicatioon/json'
+        'content-type': 'application/json',
       },
     })
       .then(res => {
@@ -35,11 +35,11 @@ export default class Note extends Component {
   }
 
   render() {
-    const { name, id, modified } = this.props
+    const { name, note_id, modified } = this.props
   return (
     <div className='Note'>
       <h2 className='Note__title'>
-        <Link to={`/note/${id}`}>
+        <Link to={`/api/notes/${note_id}`}>
           {name}
         </Link>
       </h2>
@@ -65,6 +65,6 @@ export default class Note extends Component {
 
 Note.propTypes = {
   name: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
+  note_id: PropTypes.number.isRequired,
   modified: PropTypes.string.isRequired
 }

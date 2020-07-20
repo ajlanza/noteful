@@ -55,12 +55,12 @@ export default class AddNote extends Component {
       //set all info to be added
       const addNote = {
         name: noteName,
-        modified: curTime,
-        folderId: folderId,
+        date_modified: curTime,
+        folder: folderId,
         content: noteContent,
       }
       //add the note via post
-      fetch('http://localhost:9090/notes', {
+      fetch('http://localhost:8000/api/notes', {
         method: 'POST',
         body: JSON.stringify(addNote),
         headers: {

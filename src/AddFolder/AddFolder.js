@@ -36,7 +36,7 @@ export default class AddFolder extends Component {
       name: folderName
     }
     //add the folder name via post
-    fetch('http://localhost:9090/folders', {
+    fetch('http://localhost:8000/api/folders', {
       method: 'POST',
       body: JSON.stringify(addFolderName),
       headers: {

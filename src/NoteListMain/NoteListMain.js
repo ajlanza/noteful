@@ -16,19 +16,19 @@ export default class NoteListMain extends Component {
   static contextType = NotefulContext
   
   render() {
-    const { folderId } = this.props.match.params
+    const { folder_id } = this.props.match.params
     const { notes=[] } = this.context
-    const notesForFolders = getNotesForFolder(notes, folderId)
-
+    const notesForFolders = getNotesForFolder(notes, folder_id)
+    
   return (
     <section className='NoteListMain'>
       <ul>
         {notesForFolders.map(note =>
-          <li key={note.id}>
+          <li key={note.id}>note list main{note.id}
             <Note
-              id={note.id}
+              note_id={note.id}
               name={note.name}
-              modified={note.modified}
+              modified={note.date_modified}
             />
           </li>
         )}
