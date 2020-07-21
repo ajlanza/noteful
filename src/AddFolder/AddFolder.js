@@ -3,6 +3,7 @@ import NotefulContext from '../NotefulContext';
 import ValidationError from '../ValidationError';
 import FormError from '../FormError/FormError';
 import PropTypes from 'prop-types';
+import config from '../config';
 
 export default class AddFolder extends Component {
   static contextType = NotefulContext;
@@ -36,7 +37,7 @@ export default class AddFolder extends Component {
       name: folderName
     }
     //add the folder name via post
-    fetch('http://localhost:8000/api/folders', {
+    fetch(`${config.API_ENDPOINT}/api/folders`, {
       method: 'POST',
       body: JSON.stringify(addFolderName),
       headers: {
