@@ -3,6 +3,7 @@ import NotefulContext from '../NotefulContext';
 import ValidationError from '../ValidationError';
 import FormError from '../FormError/FormError';
 import PropTypes from 'prop-types';
+import config from '../config';
 
 export default class AddNote extends Component {
     static contextType = NotefulContext;
@@ -60,7 +61,7 @@ export default class AddNote extends Component {
         content: noteContent,
       }
       //add the note via post
-      fetch('http://localhost:8000/api/notes', {
+      fetch(`${config.API_ENDPOINT}/api/notes`, {
         method: 'POST',
         body: JSON.stringify(addNote),
         headers: {

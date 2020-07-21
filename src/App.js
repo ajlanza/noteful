@@ -8,6 +8,7 @@ import './App.css';
 import AddFolder from './AddFolder/AddFolder';
 import AddNote from './AddNote/AddNote';
 import NotefulContext from './NotefulContext';
+import config from './config';
 
 class App extends Component {
     state = {
@@ -36,7 +37,7 @@ class App extends Component {
 
     componentDidMount() {
         //Get folders from API
-        fetch('http://localhost:8000/api/folders', {
+        fetch(`${config.API_ENDPOINT}/api/folders`, {
           method: 'GET',
           headers: {
             'content-type': 'application/json'
@@ -54,7 +55,7 @@ class App extends Component {
           .catch(error => this.setState({ error }))
 
           //Get notes from API
-          fetch('http://localhost:8000/api/notes', {
+          fetch(`${config.API_ENDPOINT}/api/notes`, {
           method: 'GET',
           headers: {
             'content-type': 'application/json'
