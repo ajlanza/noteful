@@ -22,7 +22,7 @@ export default class NotePageMain extends Component {
     const { note_id } = this.props.match.params
     const note = findNote(notes, note_id) || { content: ''}
   return (
-    <section className='NotePageMain'>note page main
+    <section className='NotePageMain'>
       <Note
         note_id={note.id}
         name={note.name}
